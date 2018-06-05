@@ -12,7 +12,7 @@ public class Main {
 		wheel = new Wheel();
 		
 		
-		int nbSimulations = 1;
+		int nbSimulations = 100;
 		
 		int roundsPerSimulation = 100;
 		
@@ -24,15 +24,14 @@ public class Main {
 		int averageBankroll = 0;
 		
 		int startBankroll = 555;
-		geoffrey = new Player(startBankroll);
 
 		//wheel.roll(roundsPerSimulation);
 		
 		
 		for(int i=0; i<nbSimulations; i++){
 
-			
-			//wheel.roll12stMartingalSmart(geoffrey, roundsPerSimulation, 1);
+
+			geoffrey = new Player(startBankroll);
 			wheel.rollColorMartingal(geoffrey, roundsPerSimulation, 1);
 			
 			if(geoffrey.getBankroll() < startBankroll){
@@ -66,7 +65,7 @@ public class Main {
 		for(int i=0; i<nbSimulations; i++){
 
 			geoffrey = new Player(startBankroll);
-			//wheel.roll12stMartingalSmart(geoffrey, roundsPerSimulation, 1);
+
 			wheel.rollColorMartingalSmart(geoffrey, roundsPerSimulation, 1);
 			
 			if(geoffrey.getBankroll() < startBankroll){

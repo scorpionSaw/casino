@@ -50,8 +50,9 @@ public class Wheel {
 	private Random random = new Random();
 	
 	
-	public int rollColorMartingal(Player player, int rounds, int bet){
+	public int rollColorMartingal(Player player, int rounds, int startingBet){
 		
+		int bet = startingBet;
 		//start bet
 		SquareColor color = SquareColor.RED;
 		
@@ -67,7 +68,7 @@ public class Wheel {
 				
 			if(color.equals(tempColor)) {
 				player.add(bet);
-				bet = 1;
+				bet = startingBet;
 				
 			} else {				
 				player.remove(bet);				
@@ -79,8 +80,9 @@ public class Wheel {
 	}
 
 	
-	public int rollColorMartingalSmart(Player player, int rounds, int bet){
+	public int rollColorMartingalSmart(Player player, int rounds, int startingBet){
 		
+		int bet = startingBet;
 		//start bet
 		SquareColor color = SquareColor.RED;
 		
@@ -117,7 +119,7 @@ public class Wheel {
 				
 			if(color.equals(tempColor)) {
 				player.add(bet);
-				bet = 1;
+				bet = startingBet;
 				
 			} else {				
 				player.remove(bet);				
@@ -128,7 +130,9 @@ public class Wheel {
 		return player.getBankroll();
 	}
 	
-	public int rollColorSuperMartingal(Player player, int rounds, int bet){
+	public int rollColorSuperMartingal(Player player, int rounds, int startingBet){
+		
+		int bet = startingBet;
 		
 		//start bet
 		SquareColor color = SquareColor.RED;
@@ -146,7 +150,7 @@ public class Wheel {
 				
 			if(color.equals(tempColor)) {
 				player.add(bet);
-				bet = 1;
+				bet = startingBet;
 			} else {
 				player.remove(bet);				
 				bet = bet * 2 + 1;
@@ -156,8 +160,9 @@ public class Wheel {
 		return player.getBankroll();
 	}
 
-	public int rollColorMartingalAlembert(Player player, int rounds, int bet){
-		
+	public int rollColorMartingalAlembert(Player player, int rounds, int startingBet){
+
+		int bet = startingBet;
 		//start bet
 		SquareColor color = SquareColor.RED;
 		
@@ -176,7 +181,7 @@ public class Wheel {
 				player.add(bet);
 				
 				if(bet == 1){
-					bet = 1;
+					bet = startingBet;
 				} else {
 					bet -= 1;	
 				}
@@ -192,8 +197,8 @@ public class Wheel {
 	
 
 	//Play ALWAYS on first douzaine
-	public int roll12stMartingal(Player player, int rounds, int bet){
-			
+	public int roll12stMartingal(Player player, int rounds, int startingBet){
+		int bet = startingBet;
 		
 		for (int i = 0; i<rounds; i++) {
 			
@@ -207,7 +212,7 @@ public class Wheel {
 				
 			if(number > 0 && number < 13) {
 				player.add(bet * 2);
-				bet = 1;
+				bet = startingBet;
 			} else {
 				player.remove(bet);				
 				bet *= 2;
@@ -219,7 +224,9 @@ public class Wheel {
 	
 	
 	
-	public int roll12stMartingalSmart(Player player, int rounds, int bet){
+	public int roll12stMartingalSmart(Player player, int rounds, int startingBet){
+		
+		int bet = startingBet;
 		
 		Douzaine first = new Douzaine(1);
 		Douzaine second = new Douzaine(2);
@@ -240,7 +247,7 @@ public class Wheel {
 		for (int i = 0; i<rounds; i++) {
 			
 
-			if(player.getBankroll() <= bet){
+			if(player.getBankroll() <= startingBet){
 				break;
 			}
 
@@ -258,7 +265,7 @@ public class Wheel {
 				if(number >= 1 && number <= 12){
 					//gagné
 					player.add(bet * 2);
-					bet = 1;
+					bet = startingBet;
 					win=true;
 					nbWins++;
 					if(nbWins > biggerWinStreak){
@@ -285,7 +292,7 @@ public class Wheel {
 				if(number >= 13 && number <= 24){
 					//gagné
 					player.add(bet * 2);
-					bet = 1;
+					bet = startingBet;
 					win=true;
 					nbWins++;
 					if(nbWins > biggerWinStreak){
@@ -311,7 +318,7 @@ public class Wheel {
 				if(number >= 25 && number <= 36){
 					//gagné
 					player.add(bet * 2);
-					bet = 1;
+					bet = startingBet;
 					win=true;
 					nbWins++;
 					if(nbWins > biggerWinStreak){
