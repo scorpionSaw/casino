@@ -23,7 +23,7 @@ public class Main {
 		int biggerBankroll = 0;
 		int averageBankroll = 0;
 		
-		int startBankroll = 555;
+		int startBankroll = 450;
 
 		//wheel.roll(roundsPerSimulation);
 		
